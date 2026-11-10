@@ -1,18 +1,17 @@
 name: Collaborative Workflow
 
 on:
-	push:
-		Branches: 
-			- main 
+  push:
+    branches:
+      - main
 
 jobs:
-	update_html_and_readme:
-		runs-on: ubuntu-latest
-		steps:
-			# Step 1: Checkout the respository 
-			- name: Checkout Repository
-			  uses: actions/checkout@v3
-
+  update_html_and_readme:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
       # Step 2: Update index.html
       - name: Update index.html
@@ -28,7 +27,6 @@ jobs:
           # Check if the GitHub actor is Member 2
           # Run the following CLI command to update index.html
           sed -i '/<\/body>/i <p>Updated by Member 2 on '"$(date)"'</p>' index.html
-
 
       # Step 3: Update README
       - name: Update README
